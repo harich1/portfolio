@@ -87,7 +87,7 @@
 
     /* ── Card grid ── */
     .card-grid {
-      margin-top: 48px;
+      margin-top: 20px;
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
@@ -116,8 +116,26 @@
       outline-offset: 2px;
     }
 
-    .card:hover .card-arrow {
+    a.card:hover .card-arrow {
       transform: translateX(2px);
+    }
+
+    /* ── Multi-link row (Card 5처럼 링크가 여럿인 카드 하단) ── */
+    .card-link-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+    }
+
+    .card-link-row:hover .card-arrow {
+      transform: translateX(2px);
+    }
+
+    .card-link-row + .card-link-row {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid #F5F5F5;
     }
 
     /* ── Badge ── */
@@ -220,6 +238,9 @@
 
     <!-- ── Card Grid ── -->
     <main>
+      <p style="margin-top:48px; font-size:14px; color:#525252; line-height:1.6;">
+        아래 링크를 클릭하면 제가 직접 기획·운영한 사이트를 바로 확인하실 수 있습니다.
+      </p>
       <section class="card-grid" aria-label="포트폴리오 작품 목록">
 
         <!-- Card 1 · AI 활용 교육 플랫폼 -->
@@ -283,19 +304,28 @@
         </a>
 
         <!-- Card 5 · 캔톤페어 바잉 기록 웹앱 -->
-        <a href="https://harich1.github.io/canton-fair-app/"
-           target="_blank" rel="noopener noreferrer"
-           class="card"
-           aria-label="캔톤페어 바잉 기록 웹앱 — harich1.github.io/canton-fair-app (새 탭에서 열림)">
+        <div class="card">
           <span class="badge">AI · 노코드 실증</span>
           <h2 class="card-title">캔톤페어 바잉 기록 웹앱</h2>
           <p class="card-identity">2026 캔톤페어 현장용 직접 개발 — Claude Code 협업, 단일 HTML/JS</p>
           <p class="card-role">현장 <span class="num">32건</span> 소싱 실사용 + 운영 중 <span class="num">6건</span> 버그 픽스 사이클 완주</p>
-          <div class="card-url-row">
-            <span class="card-url-text">harich1.github.io/canton-fair-app</span>
-            <span class="card-arrow" aria-hidden="true">→</span>
+          <div class="card-url-row" style="flex-direction: column; align-items: stretch; gap: 0;">
+            <a href="https://harich1.github.io/canton-fair-app/"
+               target="_blank" rel="noopener noreferrer"
+               class="card-link-row"
+               aria-label="캔톤페어 바잉 기록 웹앱 바로가기 (새 탭)">
+              <span class="card-url-text">harich1.github.io/canton-fair-app</span>
+              <span class="card-arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="https://www.notion.so/348de64ab7248120a00dd7520595fd4d"
+               target="_blank" rel="noopener noreferrer"
+               class="card-link-row"
+               aria-label="노션 기획·개발 상세 설명 보기 (새 탭)">
+              <span class="card-url-text">notion.so — 기획·개발 상세 설명</span>
+              <span class="card-arrow" aria-hidden="true">→</span>
+            </a>
           </div>
-        </a>
+        </div>
 
         <!-- Card 6 · AI 자동화 준비도 진단 체크리스트 -->
         <a href="https://harich1.github.io/checklist-app/"
